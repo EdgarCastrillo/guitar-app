@@ -21,7 +21,26 @@ Automaticamente al acabar la canción aparecerá la tercera pantalla, la de Game
 - Local storage
 
 ## Data structure
-Classes and methods definition.
+Player
+  - this.x
+  - this.y
+  - this.color
+  - this.width
+  - this.height
+  - this.totalPoints
+
+  GuitarPicks
+  - this.x
+  - this.y
+  - this.color
+  - this.width
+  - this.height
+  - this.Points (valor)
+
+  Game
+  - this.player
+  - this.guitarPicks
+  - this.gameOver
 
 
 ## States y States Transitions
@@ -33,7 +52,7 @@ Definition of the different states and their transition (transition functions)
 
 
 ## Task
-Task definition in order of priority
+(https://github.com/EdgarCastrillo/guitar-app/blob/master/IMG_3628.JPG)
 
 
 ## Links
