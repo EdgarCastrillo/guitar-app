@@ -26,8 +26,12 @@ function main() {
           </section>
         `);
         var canvasElement = document.querySelector('canvas');
-        //var gameInstance = new game(canvasElement);
-        setTimeout(createGameOverScreen, 3000);
+        var gameInstance = new Game(canvasElement);
+
+        gameInstance.gameOverCallback(createGameOverScreen);
+        gameInstance.startGame();
+
+        //setTimeout(createGameOverScreen, 3000);
     };
 
     function createGameOverScreen() {
@@ -45,4 +49,3 @@ function main() {
 };
 
 window.addEventListener('load', main);
-8

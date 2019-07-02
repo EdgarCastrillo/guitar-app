@@ -2,11 +2,16 @@
 
 function GuitarPicks(canvas) {
     this.canvas = canvas;
-    this.ctx = cnavas.getContext('2d');
+    this.ctx = canvas.getContext('2d');
     this.height = '30';
     this.width = '30';
     this.color = 'red';
     this.Points = '0';
-    this.x = ;
-    this.y = ;
+    this.x = this.canvas.width / 2;
+    this.y = '20';
+};
+
+GuitarPicks.prototype.draw = function() {
+    this.ctx.fillStyle = this.color;
+    this.ctx.fillRect(this.x, this.y, this.width, this.height);
 };
