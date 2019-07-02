@@ -35,7 +35,9 @@ Player
   - this.color
   - this.width
   - this.height
-  - this.Points (valor)
+  - this.points (valor)
+  - this.direction
+  - this.velocity
 
   Game
   - this.player
