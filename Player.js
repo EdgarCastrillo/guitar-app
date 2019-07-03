@@ -1,14 +1,14 @@
 'use strict'
 
-function Player(canvas) {
+function Player(canvas, x, y) {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
     this.height = '20';
     this.width = '20';
     this.color = 'blue';
     this.totalPoints = '';
-    this.x = this.canvas.width / 2;
-    this.y = this.canvas.height - 40;
+    this.x = x;
+    this.y = y;
 };
 
 Player.prototype.draw = function() {
