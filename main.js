@@ -22,6 +22,8 @@ function main() {
     function createGameScreen() {
         var gameScreen = buildDom(`
           <section>
+            <p>Score</p>
+            <p>Time</p>
             <canvas width=400px height= 400px></canvas>
           </section>
         `);
@@ -30,6 +32,13 @@ function main() {
 
         gameInstance.gameOverCallback(createGameOverScreen);
         gameInstance.startGame();
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowDown') {
+                console.log('check collision');
+                gameInstance.checkCollisions();
+            }
+        });
 
         //setTimeout(createGameOverScreen, 3000);
     };

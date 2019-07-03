@@ -8,15 +8,16 @@ function Game(canvas) {
     this.onGameOver = null;
     this.GuitarPicks = []
     this.cont = 0;
+    this.score = 0;
 };
 
 Game.prototype.startGame = function() {
-    // inicializar player y enenmies
     this.player = new Player(this.canvas, this.canvas.width / 2, this.canvas.height - 40);
-    //this.player2 = new Player(this.canvas, this.canvas.width / 3, this.canvas.height - 40);
+    this.player2 = new Player(this.canvas, this.canvas.width / 3.5, this.canvas.height - 40);
+    this.player3 = new Player(this.canvas, this.canvas.width / 1.4, this.canvas.height - 40);
 
     setInterval(() => {
-        if (Math.random() > 0.50) {
+        if (Math.random() > 0.40) {
             this.generatePicks();
         }
     }, 500);
@@ -24,7 +25,6 @@ Game.prototype.startGame = function() {
         this.update();
         this.clear();
         this.draw();
-        this.checkCollisions()
         if (!this.isGameOver) {
             requestAnimationFrame(loop)
         } else {
@@ -38,13 +38,17 @@ Game.prototype.generatePicks = function() {
     var newGuitarPicks = new GuitarPicks(this.canvas);
     this.GuitarPicks.push(newGuitarPicks);
 };
-/*
-Game.prototype.eliminatePicks = function() {
-    var y = this.canvas.height;
-    GuitarPicks.forEach(function(GuitarPick) {
-        // if (GuitarPick.y > y);
-    });
-};*/
+
+
+// Game.prototype.eliminatePicks = function() {
+//     var y = this.canvas.height;
+//     GuitarPicks.forEach(function(GuitarPick) {
+//         if (GuitarPick.y > y - 40) {
+
+//         }
+//     });
+// };
+
 
 Game.prototype.update = function() {
     if (this.GuitarPicks) {
@@ -60,7 +64,8 @@ Game.prototype.clear = function() {
 
 Game.prototype.draw = function() {
     this.player.draw();
-    //this.player2.draw();
+    this.player2.draw();
+    this.player3.draw();
 
     if (this.GuitarPicks) {
         this.GuitarPicks.forEach((pick) => {
@@ -70,7 +75,26 @@ Game.prototype.draw = function() {
 };
 
 Game.prototype.checkCollisions = function() {
+    console.log('checkfunction');
+    var done = false;
+    this.GuitarPicks.forEach((GuitarPicks, i) => {
+        var rightLeft = this.player.x + this.player.width >= GuitarPicks.x;
+        var leftRight = this.player.x <= GuitarPicks.x + GuitarPicks.width;
+        var bottomTop = this.player.y + this.player.height >= GuitarPicks.y;
+        var topBottom = this.player.y <= GuitarPicks.y + GuitarPicks.height;
 
+        if (bottomTop && topBottom && rightLeft && leftRight) {
+            this.GuitarPicks.splice(i, 1);
+            this.score++;
+            console.log('Win score: ' + this.score);
+            done = true;
+        };
+    });
+
+    if (!done) {
+        this.score--;
+        console.log('Retarded: ' + this.score);
+    };
 };
 
 Game.prototype.gameOverCallback = function(callback) {

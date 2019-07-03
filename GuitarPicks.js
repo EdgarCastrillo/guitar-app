@@ -7,7 +7,7 @@ function GuitarPicks(canvas) {
     this.width = 30;
     this.color = 'red';
     this.Points = '0';
-    this.x = (this.canvas.width / 2) - 15;
+    this.x = (this.canvas.width / 2);
     this.y = -20;
     this.direction = 1;
     this.velocity = 2;
@@ -21,4 +21,8 @@ GuitarPicks.prototype.move = function() {
 GuitarPicks.prototype.draw = function() {
     this.ctx.fillStyle = this.color;
     this.ctx.fillRect(this.x, this.y, this.width, this.height);
+
+    // this.ctx.beginPath();
+    // this.ctx.arc(this.x, this.y, 20, 0, 2 * Math.PI);
+    // this.ctx.stroke();
 };
