@@ -7,8 +7,8 @@ function Game(canvas) {
     this.ctx = this.canvas.getContext('2d');
     this.onGameOver = null;
     this.GuitarPicks = []
-    this.cont = 0;
     this.score = 0;
+    this.count = 0;
 };
 
 Game.prototype.startGame = function() {
@@ -17,11 +17,12 @@ Game.prototype.startGame = function() {
     this.player3 = new Player(this.canvas, this.canvas.width / 1.4, this.canvas.height - 40);
 
     setInterval(() => {
-        if (Math.random() > 0.40) {
+        if (Math.random() > 0.10) {
             this.generatePicks();
         };
-    }, 500);
+    }, 350);
     var loop = () => {
+        this.countDown();
         this.deletePicks();
         this.update();
         this.clear();
@@ -53,6 +54,8 @@ Game.prototype.update = function() {
             pick.move();
         });
     };
+    var globalScore = document.querySelector('#global-score');
+    globalScore.innerHTML = 'score: ' + this.score;
 };
 
 Game.prototype.clear = function() {
@@ -81,29 +84,45 @@ Game.prototype.checkCollisions = function(player) {
 
         if (bottomTop && topBottom && rightLeft && leftRight) {
             this.GuitarPicks.splice(i, 1);
-            this.score++;
+            this.score += 20;
             console.log('Win score: ' + this.score);
             done = true;
         };
     });
 
     if (!done) {
-        this.score--;
+        this.score -= 10;
         console.log('Retarded: ' + this.score);
     };
 };
 
-// var globalScore = document.querySelector('#global-score');
-// globalScore.innerHTML('score', this.score);
 
 Game.prototype.deletePicks = function() {
     this.GuitarPicks.forEach((pick, i) => {
         if (pick.y >= this.canvas.height) {
             this.GuitarPicks.splice(i, 1);
             console.log('pick perdido');
-            this.score--;
+            this.score -= 10;
         };
     });
+};
+
+Game.prototype.countDown = function() {
+
+    var STARTING_NUMBER = 214; // declaramos valor de inicio
+    var counter = STARTING_NUMBER; // declaramos el valor de conteo (acumulativo)
+    var paragraph = document.querySelector('#countdown'); // seleccionamos la p del DOM
+    paragraph.innerHTML = 'Time: ' + STARTING_NUMBER;
+
+    var intervalID = setInterval(callback, 1000); // declaramos función setInterval con una función callback a ejecutar cada XX segundos
+
+    function callback() {
+        counter -= 1; // va restando 1
+        paragraph.innerHTML = counter; // sustituye p por el valor de counter
+        if (counter === 0) {
+            clearInterval(intervalID); // si llega a 0, detener el interval
+        };
+    };
 };
 
 Game.prototype.gameOverCallback = function(callback) {

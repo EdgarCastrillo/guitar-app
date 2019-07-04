@@ -25,8 +25,8 @@ function main() {
 
         var gameScreen = buildDom(`
           <section>
-            <p id=global-score>Score: 0</p>
-            <p id=counterdown>Time: 0</p>
+            <p id="global-score">Score: 0</p>
+            <p id="countdown">Time: 0</p>
           </section>
           <section>
             <canvas width=500px height= 500px></canvas>
