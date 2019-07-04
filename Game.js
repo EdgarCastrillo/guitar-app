@@ -9,7 +9,7 @@ function Game(canvas) {
     this.GuitarPicks = []
     this.score = 0;
     this.time = 0;
-    this.totalTime = 5;
+    this.totalTime = 215;
 };
 
 Game.prototype.startGame = function() {
@@ -57,7 +57,7 @@ Game.prototype.update = function() {
         });
     };
     var globalScore = document.querySelector('#global-score');
-    globalScore.innerHTML = 'score: ' + this.score;
+    globalScore.innerHTML = 'Score: ' + this.score;
 };
 
 Game.prototype.clear = function() {

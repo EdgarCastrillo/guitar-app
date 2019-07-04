@@ -13,8 +13,8 @@ function main() {
         var splashScreen = buildDom(`
           <section id="intro">
             <h1>Guitar Hero</h1>
-            <button class="btn-start">START GAME</button>
-            <button class="btn-instructions">INSTRUCTIONS</button>
+            <button class="btn-start">Start Game</button>
+            <button class="btn-instructions">Instructions</button>
           </section>
         `);
         var startButton = document.querySelector('.btn-start');
@@ -27,10 +27,23 @@ function main() {
         var instructionScreen = buildDom(`
         <section id="intro">
           <h2>Instructions</h2>
+        </section>
+        <section class=instruction-keys>
+        <div>
           <img src="./image/btn-1.png"/>
+          <p>KEY LEFT</p>
+        </div>
+        <div>
           <img src="./image/btn-2.png"/>
+          <p>KEY DOWN</p>
+        </div>
+        <div>
           <img src="./image/btn-3.png"/>
-          <button class="Button">START GAME</button>
+          <p>KEY RIGHT</p>
+        </div>
+        </section>
+        <section id="intro">
+          <button class="btn-start">Start Game</button>
         </section>
       `);
         var startButton = document.querySelector('button');
@@ -44,8 +57,8 @@ function main() {
 
         var gameScreen = buildDom(`
           <section class= "score-section">
-            <p id="global-score">Score: 0</p>
-            <p id="countdown">Time: 0</p>
+            <p id="global-score">SCORE: 0</p>
+            <p id="countdown">TIME: 0</p>
           </section>
           <section class= "canvas-section">
             <canvas width=500px height= 650px>
@@ -90,12 +103,15 @@ function main() {
         var gameOverScreen = buildDom(`
           <section id="intro">
             <h1>Game Over</h1>
-            <p class="score">Score:</p>
+            <div class="score">
+              <p class="text-score">Score: </p>
+              <p class="num-score"></p>
+            </div>
             <button class="btn-start">Restart</>
           </section>
     `);
         var restartButton = document.querySelector('button');
-        document.querySelector('.score').innerHTML = score;
+        document.querySelector('.num-score').innerHTML = score;
         restartButton.addEventListener('click', createGameScreen);
     };
 
