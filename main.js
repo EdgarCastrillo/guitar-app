@@ -13,8 +13,8 @@ function main() {
         var splashScreen = buildDom(`
           <section id="intro">
             <h1>Guitar Hero</h1>
-            <button class="btn-instructions">INSTRUCTIONS</button>
             <button class="btn-start">START GAME</button>
+            <button class="btn-instructions">INSTRUCTIONS</button>
           </section>
         `);
         var startButton = document.querySelector('.btn-start');
@@ -27,6 +27,9 @@ function main() {
         var instructionScreen = buildDom(`
         <section id="intro">
           <h2>Instructions</h2>
+          <img src="./image/btn-1.png"/>
+          <img src="./image/btn-2.png"/>
+          <img src="./image/btn-3.png"/>
           <button class="Button">START GAME</button>
         </section>
       `);

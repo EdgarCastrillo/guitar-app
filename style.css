@@ -105,7 +105,8 @@ p {
     padding: 14px 32px;
     text-decoration: none;
     text-shadow: 0px 1px 0px #3d768a;
-    margin-top: 60px;
+    margin-top: 30px;
+    margin-bottom: 60px;
 }
 
 .btn-start:hover {
@@ -125,9 +126,9 @@ p {
 }
 
 .btn-instructions {
-    -moz-box-shadow: 0px 10px 14px -7px #736627;
-    -webkit-box-shadow: 0px 10px 14px -7px #736627;
-    box-shadow: 0px 10px 14px -7px #736627;
+    -moz-box-shadow: 0px 10px 14px -7px #000000;
+    -webkit-box-shadow: 0px 10px 14px -7px #000000;
+    box-shadow: 0px 10px 14px -7px #000000;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #d4be68), color-stop(1, #9c703a));
     background: -moz-linear-gradient(top, #d4be68 5%, #9c703a 100%);
     background: -webkit-linear-gradient(top, #d4be68 5%, #9c703a 100%);
@@ -144,11 +145,8 @@ p {
     color: #ffffff;
     font-family: Arial;
     font-size: 20px;
-    font-weight: bold;
-    padding: 13px 32px;
+    padding: 13px 20px;
     text-decoration: none;
-    text-shadow: 0px 1px 0px #8a7d3e;
-    margin-top: 20px;
 }
 
 .btn-instructions:hover {
@@ -162,7 +160,7 @@ p {
     background-color: #9c703a;
 }
 
-.btn-instructions:active {
+.mbtn-instructions:active {
     position: relative;
     top: 1px;
 }
@@ -200,7 +198,7 @@ section.testimonials .button {
 
 canvas {
     margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.3);
+    /* background-color: rgba(255, 255, 255, 0.3);*/
     margin-top: 50px;
-    /*background-image: url("./image/concert.jpg");*/
+    background-image: url("./image/background-canvas.png");
 }

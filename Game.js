@@ -9,7 +9,7 @@ function Game(canvas) {
     this.GuitarPicks = []
     this.score = 0;
     this.time = 0;
-    this.totalTime = 105;
+    this.totalTime = 5;
 };
 
 Game.prototype.startGame = function() {
