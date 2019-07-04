@@ -11,7 +11,7 @@ function main() {
     function createSplashScreen() {
         var splashScreen = buildDom(`
           <section>
-            <h1>Guitar Edgar</h1>
+            <h1>Guitar</h1>
             <button>START GAME</button>
           </section>
         `);
@@ -20,11 +20,16 @@ function main() {
     };
 
     function createGameScreen() {
+        var gameSong = new Audio('song/jet-are-you-gonna-be-my-girl.mp3');
+        gameSong.play();
+
         var gameScreen = buildDom(`
           <section>
-            <p>Score</p>
-            <p>Time</p>
-            <canvas width=400px height= 400px></canvas>
+            <p id=global-score>Score: 0</p>
+            <p id=counterdown>Time: 0</p>
+          </section>
+          <section>
+            <canvas width=500px height= 500px></canvas>
           </section>
         `);
         var canvasElement = document.querySelector('canvas');
@@ -34,10 +39,16 @@ function main() {
         gameInstance.startGame();
 
         document.addEventListener('keydown', function(event) {
+            console.log(event);
+            if (event.key === 'ArrowLeft') {
+                gameInstance.checkCollisions(gameInstance.player);
+            };
             if (event.key === 'ArrowDown') {
-                console.log('check collision');
-                gameInstance.checkCollisions();
-            }
+                gameInstance.checkCollisions(gameInstance.player2);
+            };
+            if (event.key === 'ArrowRight') {
+                gameInstance.checkCollisions(gameInstance.player3);
+            };
         });
 
         //setTimeout(createGameOverScreen, 3000);
