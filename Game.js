@@ -8,9 +8,8 @@ function Game(canvas) {
     this.onGameOver = null;
     this.GuitarPicks = []
     this.score = 0;
-    this.count = 0;
     this.time = 0;
-    this.totalTime = 4;
+    this.totalTime = 215;
 };
 
 Game.prototype.startGame = function() {
@@ -115,7 +114,7 @@ Game.prototype.countDown = function() {
     if (this.time % 60 === 0) {
         this.totalTime--;
     } else if (this.totalTime === 0) {
-        this.isGameOver
+        this.isGameOver = true;
     }
 
     var paragraph = document.querySelector('#countdown'); // seleccionamos la p del DOM
