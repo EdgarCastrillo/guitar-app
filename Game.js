@@ -32,7 +32,7 @@ Game.prototype.startGame = function() {
         if (!this.isGameOver) {
             requestAnimationFrame(loop)
         } else {
-            this.onGameOver();
+            this.onGameOver(this.score);
         };
     };
     loop();

@@ -2,6 +2,7 @@
 
 function main() {
     var mainElement = document.querySelector('#site-main');
+    var gameSong = new Audio('song/jet-are-you-gonna-be-my-girl.mp3');
 
     function buildDom(html) {
         mainElement.innerHTML = html;
@@ -10,9 +11,9 @@ function main() {
 
     function createSplashScreen() {
         var splashScreen = buildDom(`
-          <section>
+          <section id="intro">
             <h1>Guitar</h1>
-            <button>START GAME</button>
+            <button class="Button">START GAME</button>
           </section>
         `);
         var startButton = document.querySelector('button');
@@ -20,7 +21,6 @@ function main() {
     };
 
     function createGameScreen() {
-        var gameSong = new Audio('song/jet-are-you-gonna-be-my-girl.mp3');
         gameSong.play();
 
         var gameScreen = buildDom(`
@@ -29,7 +29,8 @@ function main() {
             <p id="countdown">Time: 0</p>
           </section>
           <section>
-            <canvas width=500px height= 500px></canvas>
+            <canvas width=600px height= 600px>
+            </canvas>
           </section>
         `);
         var canvasElement = document.querySelector('canvas');
@@ -54,14 +55,17 @@ function main() {
         //setTimeout(createGameOverScreen, 3000);
     };
 
-    function createGameOverScreen() {
+    function createGameOverScreen(score) {
+        gameSong.pause();
         var gameOverScreen = buildDom(`
           <section>
             <h1>Game Over</h1>
-            <button>Restart</>
+            <p class="score"></p>
+            <button class="Button">Restart</>
           </section>
     `);
         var restartButton = document.querySelector('button');
+        document.querySelector('.score').innerHTML = score;
         restartButton.addEventListener('click', createGameScreen);
     };
 
