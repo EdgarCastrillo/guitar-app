@@ -9,13 +9,13 @@ function Game(canvas) {
     this.GuitarPicks = []
     this.score = 0;
     this.time = 0;
-    this.totalTime = 215;
+    this.totalTime = 105;
 };
 
 Game.prototype.startGame = function() {
-    this.player = new Player(this.canvas, this.canvas.width / 3.5, this.canvas.height - 40);
-    this.player2 = new Player(this.canvas, this.canvas.width / 2, this.canvas.height - 40);
-    this.player3 = new Player(this.canvas, this.canvas.width / 1.4, this.canvas.height - 40);
+    this.player = new Player(this.canvas, (this.canvas.width / 3.5) - 50, this.canvas.height - 120, 1);
+    this.player2 = new Player(this.canvas, (this.canvas.width / 2) - 50, this.canvas.height - 120, 2);
+    this.player3 = new Player(this.canvas, (this.canvas.width / 1.4) - 50, this.canvas.height - 120, 3);
 
     setInterval(() => {
         if (Math.random() > 0.10) {
@@ -41,11 +41,11 @@ Game.prototype.startGame = function() {
 Game.prototype.generatePicks = function() {
     var numRandom = Math.floor((Math.random() * 10));
     if (numRandom <= 3) {
-        var newGuitarPicks = new GuitarPicks(this.canvas, this.canvas.width / 3.5);
+        var newGuitarPicks = new GuitarPicks(this.canvas, (this.canvas.width / 3.5) - 25);
     } else if (numRandom <= 6) {
-        var newGuitarPicks = new GuitarPicks(this.canvas, this.canvas.width / 2);
+        var newGuitarPicks = new GuitarPicks(this.canvas, (this.canvas.width / 2) - 25);
     } else {
-        var newGuitarPicks = new GuitarPicks(this.canvas, this.canvas.width / 1.4);
+        var newGuitarPicks = new GuitarPicks(this.canvas, (this.canvas.width / 1.4) - 25);
     }
     this.GuitarPicks.push(newGuitarPicks);
 };
