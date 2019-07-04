@@ -9,6 +9,8 @@ function Game(canvas) {
     this.GuitarPicks = []
     this.score = 0;
     this.count = 0;
+    this.time = 0;
+    this.totalTime = 4;
 };
 
 Game.prototype.startGame = function() {
@@ -22,6 +24,7 @@ Game.prototype.startGame = function() {
         };
     }, 350);
     var loop = () => {
+        this.time++;
         this.countDown();
         this.deletePicks();
         this.update();
@@ -109,20 +112,14 @@ Game.prototype.deletePicks = function() {
 
 Game.prototype.countDown = function() {
 
-    var STARTING_NUMBER = 214; // declaramos valor de inicio
-    var counter = STARTING_NUMBER; // declaramos el valor de conteo (acumulativo)
+    if (this.time % 60 === 0) {
+        this.totalTime--;
+    } else if (this.totalTime === 0) {
+        this.isGameOver
+    }
+
     var paragraph = document.querySelector('#countdown'); // seleccionamos la p del DOM
-    paragraph.innerHTML = 'Time: ' + STARTING_NUMBER;
-
-    var intervalID = setInterval(callback, 1000); // declaramos función setInterval con una función callback a ejecutar cada XX segundos
-
-    function callback() {
-        counter -= 1; // va restando 1
-        paragraph.innerHTML = counter; // sustituye p por el valor de counter
-        if (counter === 0) {
-            clearInterval(intervalID); // si llega a 0, detener el interval
-        };
-    };
+    paragraph.innerHTML = 'Time: ' + this.totalTime;
 };
 
 Game.prototype.gameOverCallback = function(callback) {
