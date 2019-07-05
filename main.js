@@ -72,7 +72,6 @@ function main() {
         gameInstance.startGame();
 
         document.addEventListener('keydown', function(event) {
-            console.log(event);
             if (event.key === 'ArrowLeft') {
                 gameInstance.player.isPush = true;
                 gameInstance.checkCollisions(gameInstance.player);

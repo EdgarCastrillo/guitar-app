@@ -3,6 +3,7 @@
 html {
     box-sizing: border-box;
     /*background: url('./IMG_3628.JPG');*/
+    overflow: hidden;
 }
 
 *,
@@ -37,14 +38,17 @@ h1 {
 
 h2 {
     font-size: 6em;
+    color: white;
+    text-shadow: 1px 1px 3px black, 0 0 3px black, 0 0 2px black;
 }
 
 h3 {}
 
 p {
     margin: 0;
-    color: black;
-    font-size: 1.3em;
+    color: white;
+    font-size: 1.4em;
+    text-shadow: 1px 1px 2px black, 0 0 1px black, 0 0 1px black;
 }
 
 
@@ -101,6 +105,7 @@ p {
     padding: 10px 20px 10px 20px;
     text-decoration: none;
     margin: 70px 0 30px;
+    transition: transform .2s;
 }
 
 .btn-start:hover {
@@ -111,6 +116,7 @@ p {
     background-image: -o-linear-gradient(top, #c42727, #f06969);
     background-image: linear-gradient(to bottom, #c42727, #f06969);
     text-decoration: none;
+    transform: scale(1.3);
 }
 
 .btn-instructions {
@@ -128,6 +134,7 @@ p {
     font-size: 18px;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
+    transition: transform .2s;
 }
 
 .btn-instructions:hover {
@@ -138,6 +145,7 @@ p {
     background-image: -o-linear-gradient(top, #153f94, #75bae0);
     background-image: linear-gradient(to bottom, #153f94, #75bae0);
     text-decoration: none;
+    transform: scale(1.3);
 }
 
 ext-decoration: none;
@@ -178,7 +186,7 @@ canvas {
     margin: 0 auto;
     /* background-color: rgba(255, 255, 255, 0.3);*/
     
-    margin-top: 35px;
+    margin-top: 20px;
     background-image: url("./image/background-canvas.png");
 }
 .instruction-keys {

@@ -9,7 +9,11 @@ function Game(canvas) {
     this.GuitarPicks = []
     this.score = 0;
     this.time = 0;
-    this.totalTime = 5;
+    this.totalTime = 35;
+    this.effect = document.getElementById('flash');
+    this.effectX = 0;
+    this.effectY = 0;
+    this.effectSong = new Audio('./song/explosion-effect-3.mp3');
 };
 
 Game.prototype.startGame = function() {
@@ -21,7 +25,7 @@ Game.prototype.startGame = function() {
         if (Math.random() > 0.10) {
             this.generatePicks();
         };
-    }, 350);
+    }, 450);
     var loop = () => {
         this.time++;
         this.countDown();
@@ -81,13 +85,14 @@ Game.prototype.checkCollisions = function(player) {
     this.GuitarPicks.forEach((GuitarPicks, i) => {
         var rightLeft = player.x + player.width >= GuitarPicks.x;
         var leftRight = player.x <= GuitarPicks.x + GuitarPicks.width;
-        var bottomTop = player.y + player.height >= GuitarPicks.y;
-        var topBottom = player.y <= GuitarPicks.y + GuitarPicks.height;
+        var bottomTop = player.y - 10 + player.height >= GuitarPicks.y - 10;
+        var topBottom = player.y - 10 <= GuitarPicks.y + GuitarPicks.height - 10;
 
         if (bottomTop && topBottom && rightLeft && leftRight) {
+            this.effectSong.load();
             this.GuitarPicks.splice(i, 1);
             this.score += 20;
-            //console.log('Win score: ' + this.score);
+            this.effectSong.play()
             done = true;
         };
     });
@@ -97,6 +102,14 @@ Game.prototype.checkCollisions = function(player) {
         //console.log('Retarded: ' + this.score);
     };
 };
+
+/*Game.prototype.showFlash = function() {
+    console.log('show ieffect');
+    this.ctx.drawImage(this.effect, this.effectX - 25, this.effectY - 25, 100, 100);
+    let isFlash = setTimeOut(() => {
+        clearInterval(isFlash)
+    }, 2000);
+}*/
 
 
 Game.prototype.deletePicks = function() {
