@@ -104,7 +104,7 @@ function main() {
           <section id="intro">
             <h1>Game Over</h1>
             <div class="score">
-              <p class="text-score">Score: </p>
+              <p class="text-score">Score:</p>
               <p class="num-score"></p>
             </div>
             <button class="btn-start">Restart</>

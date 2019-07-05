@@ -9,7 +9,7 @@ function Game(canvas) {
     this.GuitarPicks = []
     this.score = 0;
     this.time = 0;
-    this.totalTime = 215;
+    this.totalTime = 5;
 };
 
 Game.prototype.startGame = function() {
@@ -87,14 +87,14 @@ Game.prototype.checkCollisions = function(player) {
         if (bottomTop && topBottom && rightLeft && leftRight) {
             this.GuitarPicks.splice(i, 1);
             this.score += 20;
-            console.log('Win score: ' + this.score);
+            //console.log('Win score: ' + this.score);
             done = true;
         };
     });
 
     if (!done) {
         this.score -= 10;
-        console.log('Retarded: ' + this.score);
+        //console.log('Retarded: ' + this.score);
     };
 };
 
@@ -103,7 +103,7 @@ Game.prototype.deletePicks = function() {
     this.GuitarPicks.forEach((pick, i) => {
         if (pick.y >= this.canvas.height) {
             this.GuitarPicks.splice(i, 1);
-            console.log('pick perdido');
+            //console.log('pick perdido');
             this.score -= 10;
         };
     });
@@ -117,7 +117,7 @@ Game.prototype.countDown = function() {
         this.isGameOver = true;
     }
 
-    var paragraph = document.querySelector('#countdown'); // seleccionamos la p del DOM
+    var paragraph = document.querySelector('#countdown');
     paragraph.innerHTML = 'Time: ' + this.totalTime;
 };
 
